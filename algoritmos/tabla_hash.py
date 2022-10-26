@@ -1,67 +1,73 @@
 
 ### No se si hacerlo con clases o importar directamente las funciones.
 
-class Hash():
 
+def crear_tabla(tamanio):
+    """Crear una tabla hash vacia"""
+    tabla = [None]*tamanio
+    return tabla
 
-    def crear_tabla(tamanio):
-        """Crear una tabla hash vacia"""
-        tabla = [None]*tamanio
-        return tabla
+def cantidad_elementos(tabla):
+    """Devuelve la cantidad de elementos en la tabla"""
+    return len(tabla) - tabla.count(None)
 
-    def cantidad_elementos(tabla):
-        """Devuelve la cantidad de elementos en la tabla"""
-        return len(tabla) - tabla.count(None)
+def funcion_hash(dato, tamanio_tabla):
+    """Determina la posicion del dato en la tabla"""
+    return len(str(dato).strip()) % tamanio_tabla
 
-    def funcion_hash(dato, tamanio_tabla):
-        """Determina la posicion del dato en la tabla"""
-        return len(str(dato).strip()) % tamanio_tabla
+def agregar (tabla, dato):
+    """Agrega un elemento a la tabla encadenada"""
+    posicion = funcion_hash(dato, len(tabla))
+    if (tabla[posicion] is None):
+        tabla[posicion] = dato
+    
+    else:
+        print("Se produjo una colision")
 
-    def agregar (tabla, dato):
-        """Agrega un elemento a la tabla encadenada"""
-        posicion = funcion_hash(dato, len(tabla))
-        if (tabla[posicion] is None):
-            tabla[posicion] = dato
+        """ Si se produce dicha colision ejectuar funcion de sondeo para reubicar el elemento """
+
+def buscar(tabla, buscado):
+    """ Determina si un elemento existe en la tabla y determina su posicion. """
+    pos = None
+    posicion = funcion_hash(buscado, len(tabla))
+    if (tabla[posicion] is not None):
         
+        if (buscado == tabla[posicion]):
+            pos = posicion
+
         else:
-            print("Se produjo una colision")
+            print("Aplicar funcion de sondeo")
 
-            """ Si se produce dicha colision ejectuar funcion de sondeo para reubicar el elemento """
+    return pos
 
-    def buscar(tabla, buscado):
-        """ Determina si un elemento existe en la tabla y determina su posicion. """
-        pos = None
-        posicion = funcion_hash(buscado, len(tabla))
-        if (tabla[posicion] is not None):
-            
-            if (buscado == tabla[posicion]):
-                pos = posicion
+def quitar(tabla, dato):
+    """Quita un elemento de la tabla cerrada si existe"""
 
-            else:
-                print("Aplicar funcion de sondeo")
+    dato = None
+    posicion = funcion_hash(dato, len(tabla))
+    if (tabla[posicion] is not None):
 
-        return pos
+        if (dato == tabla[posicion]):
+            dato = tabla[posicion]
+            tabla[posicion] = None
 
-    def quitar(tabla, dato):
-        """Quita un elemento de la tabla cerrada si existe"""
+        else:
+            print("Aplicar funcion de sondeo")
+            """Para determinar si esta en otra posicion y quitarlo"""
 
-        dato = None
-        posicion = funcion_hash(dato, len(tabla))
-        if (tabla[posicion] is not None):
-
-            if (dato == tabla[posicion]):
-                dato = tabla[posicion]
-                tabla[posicion] = None
-
-            else:
-                print("Aplicar funcion de sondeo")
-                """Para determinar si esta en otra posicion y quitarlo"""
-
-        return dato
+    return dato
 
 
+""" Probando. """
+# tabla = crear_tabla(9)
 
+# agregar(tabla, "Hola")
 
+# agregar(tabla, "Soles")
+
+# agregar(tabla, "wwwww")
+
+# print(buscar(tabla, "wwwww"))
         
 
 
