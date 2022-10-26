@@ -6,4 +6,4 @@ def crear_tabla(tamanio):
     return tabla
 
 def cantidad_elementos(tabla):
-    """Devuelve la cantidad de elementos en la tabla"""
+    """Devuelve la cantidad de elementos en la tabla"""q
