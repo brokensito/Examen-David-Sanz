@@ -59,15 +59,15 @@ def quitar(tabla, dato):
 
 
 """ Probando. """
-# tabla = crear_tabla(9)
+tabla = crear_tabla(9)
 
-# agregar(tabla, "Hola")
+agregar(tabla, "Hola")
 
-# agregar(tabla, "Soles")
+agregar(tabla, "Soles")
 
-# agregar(tabla, "wwwww")
+agregar(tabla, "wwwww")
 
-# print(buscar(tabla, "wwwww"))
+print(buscar(tabla, "wwwww"))
         
 
 
